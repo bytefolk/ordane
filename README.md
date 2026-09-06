@@ -1,6 +1,8 @@
 # Ordane
 
 Official marketing site for **Ordane** — the goal-first organization workbench.
+
+**Live:** https://bytefolk.github.io/ordane/
 Ordane is built on [`org-workbench`](https://github.com/bytefolk/org-workbench):
 file tree is the org chart, positions are addressable digital employees, and
 a goal is chartered as a `line` with ownership, order, and dedup.
