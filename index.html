@@ -15,7 +15,7 @@
     --line-strong:oklch(78% 0.01 240);
     --ink:        oklch(19% 0.012 240);
     --ink-2:      oklch(38% 0.014 240);
-    --ink-3:      oklch(55% 0.012 240);
+    --ink-3:      oklch(53.3% 0.012 240);
 
     --teal:       oklch(47% 0.11 165);
     --teal-bright:oklch(58% 0.125 165);
@@ -43,7 +43,7 @@
       --line-strong:oklch(40% 0.018 240);
       --ink:        oklch(95% 0.008 240);
       --ink-2:      oklch(76% 0.012 240);
-      --ink-3:      oklch(56% 0.014 240);
+      --ink-3:      oklch(60.7% 0.014 240);
       --teal:       oklch(68% 0.125 165);
       --teal-bright:oklch(76% 0.13 165);
       --teal-soft:  oklch(27% 0.05 165);
@@ -61,7 +61,7 @@
     --line-strong:oklch(40% 0.018 240);
     --ink:        oklch(95% 0.008 240);
     --ink-2:      oklch(76% 0.012 240);
-    --ink-3:      oklch(56% 0.014 240);
+    --ink-3:      oklch(60.7% 0.014 240);
     --teal:       oklch(68% 0.125 165);
     --teal-bright:oklch(76% 0.13 165);
     --teal-soft:  oklch(27% 0.05 165);
@@ -78,7 +78,7 @@
     --line-strong:oklch(78% 0.01 240);
     --ink:        oklch(19% 0.012 240);
     --ink-2:      oklch(38% 0.014 240);
-    --ink-3:      oklch(55% 0.012 240);
+    --ink-3:      oklch(53.3% 0.012 240);
     --teal:       oklch(47% 0.11 165);
     --teal-bright:oklch(58% 0.125 165);
     --teal-soft:  oklch(94% 0.035 165);
@@ -394,7 +394,7 @@
         <div class="cap-row"><span class="cap-check">●</span><div class="cap-text"><b>org tree / apply</b><span>组织契约 v1alpha1，本地 0600 存储；apply 重算权限、留审计</span></div><div class="cap-state st-shipped">Shipped</div></div>
         <div class="cap-row"><span class="cap-check">●</span><div class="cap-text"><b>chat @position</b><span>岗位寻址对话；turn 契约 R3；崩溃 → indeterminate，不自动重试</span></div><div class="cap-state st-shipped">Shipped</div></div>
         <div class="cap-row"><span class="cap-check">●</span><div class="cap-text"><b>org-permissions.v1</b><span>Authority Scope / Context Scope 逐岗位派发；越权拒绝并给恢复指引</span></div><div class="cap-state st-shipped">Shipped</div></div>
-        <div class="cap-row"><span class="cap-check">●</span><div class="cap-text"><b>mem 长期 Context</b><span>Strict MemoryPort，跨会话召回；agent token 与 human token 分离</span></div><div class="cap-state st-shipped">Shipped</div></div>
+        <div class="cap-row"><span class="cap-check">◐</span><div class="cap-text"><b>mem 长期 Context</b><span>Strict MemoryPort 架构与 agent/human token 分离已落地；跨会话长期召回与委派链仍在验证，未计入已发布能力</span></div><div class="cap-state st-building">Building</div></div>
         <div class="cap-row"><span class="cap-check">◐</span><div class="cap-text"><b>Windows 支持</b><span>原生进程树清理、.cmd spawn、qoder Windows 使能</span></div><div class="cap-state st-building">Building</div></div>
       </div>
     </div>
@@ -404,7 +404,7 @@
     <div class="sec-head">
       <div class="sec-eyebrow">Runtime Abstraction</div>
       <h2>模型 / Host 可换，上层业务不改。</h2>
-      <p class="sec-lede">Ordane 不绑定单一 Agent Host——三种运行时经统一的证据标准接入同一套 turn 契约。</p>
+      <p class="sec-lede">Ordane 不绑定单一 Agent Host——同一套 turn 契约下，claude-local 与 qoder 已有本机验证证据，openai-compatible 处于预览阶段。</p>
     </div>
 
     <div class="orbit-wrap reveal">
@@ -413,7 +413,7 @@
       <div class="orbit-center">Ordane<small>turn 契约 R3</small></div>
       <div class="orbit-node" style="top: 6%; left: 50%;">claude-local<span class="tag">Agent Host</span></div>
       <div class="orbit-node" style="top: 74%; left: 10%;">qoder<span class="tag">Agent Host</span></div>
-      <div class="orbit-node" style="top: 74%; left: 90%;">openai-compatible<span class="tag">Agent Host</span></div>
+      <div class="orbit-node" style="top: 74%; left: 90%; opacity: 0.75; border-style: dashed;">openai-compatible<span class="tag">Preview · 未 live-qualified</span></div>
     </div>
   </section>
 
@@ -433,7 +433,7 @@
           <ul>
             <li>workspace init</li>
             <li>org tree · chat @position</li>
-            <li>本地对话闭环 · 本地记忆</li>
+            <li>本地对话闭环 · 本地历史 readback</li>
             <li>CLI · Electron 桌面</li>
           </ul>
           <div class="mind">心智　工具，不是监控</div>
