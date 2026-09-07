@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20width%3D%2264%22%20height%3D%2264%22%20role%3D%22img%22%20aria-label%3D%22Ordane%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22ordane-ring%22%20x1%3D%220.18%22%20y1%3D%220%22%20x2%3D%220.78%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23b3f4e2%22%2F%3E%20%3Cstop%20offset%3D%220.5%22%20stop-color%3D%22%2363dcc1%22%2F%3E%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232ebfa1%22%2F%3E%20%3C%2FlinearGradient%3E%20%3ClinearGradient%20id%3D%22ordane-tri%22%20x1%3D%221%22%20y1%3D%220%22%20x2%3D%220.1%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23a3eeda%22%2F%3E%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2332c2a5%22%2F%3E%20%3C%2FlinearGradient%3E%20%3ClinearGradient%20id%3D%22ordane-tile%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220.4%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%233a3a3a%22%2F%3E%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232b2b2b%22%2F%3E%20%3C%2FlinearGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214.5%22%20fill%3D%22url%28%23ordane-tile%29%22%2F%3E%20%3Ccircle%20cx%3D%2232%22%20cy%3D%2230.8%22%20r%3D%2216.2%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ordane-ring%29%22%20stroke-width%3D%227%22%2F%3E%20%3Cpath%20d%3D%22M26.6%2026.2%20L38.2%2032.3%20L28.4%2037.2%20Z%22%20fill%3D%22url%28%23ordane-tri%29%22%20stroke%3D%22url%28%23ordane-tri%29%22%20stroke-width%3D%221.7%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%2F%3E%20%3Ccircle%20cx%3D%2232.4%22%20cy%3D%2237.1%22%20r%3D%220.9%22%20fill%3D%22%23ffffff%22%2F%3E%20%3Ccircle%20cx%3D%2229.5%22%20cy%3D%2240.4%22%20r%3D%220.9%22%20fill%3D%22%233ecab0%22%2F%3E%20%3Ccircle%20cx%3D%2232.4%22%20cy%3D%2240.4%22%20r%3D%220.9%22%20fill%3D%22%23ffffff%22%2F%3E%20%3Ccircle%20cx%3D%2235.3%22%20cy%3D%2240.4%22%20r%3D%220.9%22%20fill%3D%22%233ecab0%22%2F%3E%20%3C%2Fsvg%3E" />
 <title>Ordane — Studio</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+SC:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
@@ -22,7 +23,7 @@
     --teal-soft:  oklch(94% 0.035 165);
     --teal-ink:   oklch(99% 0.004 165);
 
-    --amber:      oklch(64% 0.15 60);
+    --amber:      oklch(54.5% 0.15 60);
     --amber-soft: oklch(93% 0.06 62);
     --bad:        oklch(53% 0.19 25);
 
@@ -83,7 +84,7 @@
     --teal-bright:oklch(58% 0.125 165);
     --teal-soft:  oklch(94% 0.035 165);
     --teal-ink:   oklch(99% 0.004 165);
-    --amber:      oklch(64% 0.15 60);
+    --amber:      oklch(54.5% 0.15 60);
     --amber-soft: oklch(93% 0.06 62);
     --bad:        oklch(53% 0.19 25);
   }
@@ -118,8 +119,8 @@
   .nav { position: sticky; top: 0; z-index: 30; background: color-mix(in oklab, var(--paper) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 0; }
   .wordmark { display: flex; align-items: center; gap: 9px; font-family: var(--font-display); font-weight: 800; font-size: 1.22rem; letter-spacing: -0.015em; }
-  .wordmark .badge { width: 26px; height: 26px; border-radius: 8px; background: var(--teal); display: flex; align-items: center; justify-content: center; }
-  .wordmark .badge svg { width: 15px; height: 15px; }
+  .wordmark .badge { width: 27px; height: 27px; display: flex; align-items: center; justify-content: center; }
+  .wordmark .badge svg { width: 27px; height: 27px; display: block; }
   .nav-links { display: flex; gap: 28px; font-size: 0.9rem; font-weight: 600; color: var(--ink-2); }
   .nav-links a { text-decoration: none; }
   .nav-links a:hover { color: var(--teal); }
@@ -290,7 +291,7 @@
 <nav class="nav">
   <div class="shell nav-inner">
     <div class="wordmark">
-      <span class="badge"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 20V10L12 4L20 10V20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20V14H15V20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ordane"> <defs> <linearGradient id="nav-ring" x1="0.18" y1="0" x2="0.78" y2="1"> <stop offset="0" stop-color="#b3f4e2"/> <stop offset="0.5" stop-color="#63dcc1"/> <stop offset="1" stop-color="#2ebfa1"/> </linearGradient> <linearGradient id="nav-tri" x1="1" y1="0" x2="0.1" y2="1"> <stop offset="0" stop-color="#a3eeda"/> <stop offset="1" stop-color="#32c2a5"/> </linearGradient> <linearGradient id="nav-tile" x1="0" y1="0" x2="0.4" y2="1"> <stop offset="0" stop-color="#3a3a3a"/> <stop offset="1" stop-color="#2b2b2b"/> </linearGradient> </defs> <rect rx="14.5" fill="url(#nav-tile)"/> <circle cx="32" cy="30.8" r="16.2" fill="none" stroke="url(#nav-ring)" stroke-width="7"/> <path d="M26.6 26.2 L38.2 32.3 L28.4 37.2 Z" fill="url(#nav-tri)" stroke="url(#nav-tri)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/> <circle cx="32.4" cy="37.1" r="0.9" fill="#ffffff"/> <circle cx="29.5" cy="40.4" r="0.9" fill="#3ecab0"/> <circle cx="32.4" cy="40.4" r="0.9" fill="#ffffff"/> <circle cx="35.3" cy="40.4" r="0.9" fill="#3ecab0"/> </svg></span>
       Ordane
     </div>
     <div class="nav-links">
@@ -511,7 +512,7 @@
     </div>
   </div>
   <div class="foot-bottom">
-    <span>Ordane · ByteFolk · 温州无极科技</span>
+    <span>Ordane · ByteFolk</span>
     <span>本地优先 · 数据不出域</span>
   </div>
 </footer>
