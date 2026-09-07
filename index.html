@@ -19,7 +19,7 @@
     --ink-3:      oklch(53.3% 0.012 240);
 
     --teal:       oklch(47% 0.11 165);
-    --teal-bright:oklch(58% 0.125 165);
+    --teal-hover: oklch(40% 0.11 165);
     --teal-soft:  oklch(94% 0.035 165);
     --teal-ink:   oklch(99% 0.004 165);
 
@@ -46,7 +46,7 @@
       --ink-2:      oklch(76% 0.012 240);
       --ink-3:      oklch(60.7% 0.014 240);
       --teal:       oklch(68% 0.125 165);
-      --teal-bright:oklch(76% 0.13 165);
+      --teal-hover: oklch(76% 0.13 165);
       --teal-soft:  oklch(27% 0.05 165);
       --teal-ink:   oklch(14% 0.02 165);
       --amber:      oklch(76% 0.13 62);
@@ -64,7 +64,7 @@
     --ink-2:      oklch(76% 0.012 240);
     --ink-3:      oklch(60.7% 0.014 240);
     --teal:       oklch(68% 0.125 165);
-    --teal-bright:oklch(76% 0.13 165);
+    --teal-hover: oklch(76% 0.13 165);
     --teal-soft:  oklch(27% 0.05 165);
     --teal-ink:   oklch(14% 0.02 165);
     --amber:      oklch(76% 0.13 62);
@@ -81,7 +81,7 @@
     --ink-2:      oklch(38% 0.014 240);
     --ink-3:      oklch(53.3% 0.012 240);
     --teal:       oklch(47% 0.11 165);
-    --teal-bright:oklch(58% 0.125 165);
+    --teal-hover: oklch(40% 0.11 165);
     --teal-soft:  oklch(94% 0.035 165);
     --teal-ink:   oklch(99% 0.004 165);
     --amber:      oklch(54.5% 0.15 60);
@@ -127,7 +127,7 @@
   .nav-right { display: flex; align-items: center; gap: 12px; }
   .btn { font-family: var(--font-body); font-weight: 700; font-size: 0.92rem; text-decoration: none; border-radius: 10px; padding: 11px 22px; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
   .btn-primary { background: var(--teal); color: var(--teal-ink); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -10px var(--teal); background: var(--teal-bright); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -10px var(--teal); background: var(--teal-hover); }
   .btn-ghost { border: 1.5px solid var(--line-strong); color: var(--ink); }
   .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
   .btn-sm { padding: 8px 16px; font-size: 0.85rem; border-radius: 8px; }
@@ -243,6 +243,25 @@
   }
   .orbit-node .tag { color: var(--ink-3); font-size: 0.68rem; display: block; margin-top: 1px; }
 
+  /* A ~334px-wide circle cannot hold three nowrap host pills: at phone width
+     the absolutely-positioned nodes pushed the document 71px wider than the
+     viewport. Below 720px the diagram becomes a plain vertical stack. */
+  @media (max-width: 720px) {
+    .orbit-wrap {
+      aspect-ratio: auto; max-width: 100%;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+    .orbit-ring { display: none; }
+    .orbit-center {
+      position: static; top: auto; left: auto; transform: none;
+      width: 104px; height: 104px; margin-bottom: 4px;
+    }
+    .orbit-node {
+      position: static; top: auto !important; left: auto !important; transform: none;
+      white-space: normal; text-align: center; max-width: 100%;
+    }
+  }
+
   /* ── ladder as tier cards ───────────────────────────────────── */
   .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 980px; margin: 0 auto; align-items: stretch; }
   @media (max-width: 860px) { .tiers { grid-template-columns: 1fr; } }
@@ -277,7 +296,7 @@
   .foot { padding: 80px 0 40px; }
   .foot-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; margin-bottom: 48px; }
   @media (max-width: 780px) { .foot-grid { grid-template-columns: repeat(2, 1fr); } }
-  .foot-col h4 { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin: 0 0 16px; font-weight: 600; }
+  .foot-col h3 { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin: 0 0 16px; font-weight: 600; }
   .foot-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
   .foot-col a { text-decoration: none; font-size: 0.9rem; color: var(--ink-2); }
   .foot-col a:hover { color: var(--teal); }
@@ -368,22 +387,22 @@
       </div>
 
       <div class="tabs reveal" role="tablist" aria-label="三条原则">
-        <button class="tab-btn" role="tab" aria-selected="true" data-tab="t1">Local-First</button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-tab="t2">Contract-Backed</button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-tab="t3">Authority-Aware</button>
+        <button class="tab-btn" role="tab" id="tab-t1" aria-controls="t1" aria-selected="true" tabindex="0" data-tab="t1">Local-First</button>
+        <button class="tab-btn" role="tab" id="tab-t2" aria-controls="t2" aria-selected="false" tabindex="-1" data-tab="t2">Contract-Backed</button>
+        <button class="tab-btn" role="tab" id="tab-t3" aria-controls="t3" aria-selected="false" tabindex="-1" data-tab="t3">Authority-Aware</button>
       </div>
       <div class="tab-panels reveal">
-        <div class="tab-panel" id="t1" data-active>
+        <div class="tab-panel" id="t1" role="tabpanel" aria-labelledby="tab-t1" tabindex="0" data-active>
           <span class="k">本地优先，数据不出域</span>
           <h3>控制面跑在员工电脑上</h3>
           <p>127.0.0.1 + 每启动 boot-token，凭据经 0600 auth-payload 传递，从来不出本地边界。合规叙事天生干净。</p>
         </div>
-        <div class="tab-panel" id="t2">
+        <div class="tab-panel" id="t2" role="tabpanel" aria-labelledby="tab-t2" tabindex="0">
           <span class="k">契约先行，可替换、可测评</span>
           <h3>Agent Loop as a Service</h3>
           <p>turn 契约、org 契约、Runtime 抽象层，模型 / Host 可换，上层业务不改。所有能力经 golden case 测评验证，不凭直觉路由。</p>
         </div>
-        <div class="tab-panel" id="t3">
+        <div class="tab-panel" id="t3" role="tabpanel" aria-labelledby="tab-t3" tabindex="0">
           <span class="k">披露是授权动作，不是系统动作</span>
           <h3>秘书 vs 参谋</h3>
           <p>个人版零披露完整可用；每次披露员工可见、可撤、有 ledger。团队版只消费"事实"，永远不碰"过程"。</p>
@@ -487,7 +506,7 @@
       <p class="foot-brand-desc">以目标为纲的组织工作台。文件树即组织架构，岗位即可寻址数字员工。</p>
     </div>
     <div class="foot-col">
-      <h4>产品</h4>
+      <h3>产品</h3>
       <ul>
         <li><a href="#concept">line 原语</a></li>
         <li><a href="#principles">三条原则</a></li>
@@ -496,7 +515,7 @@
       </ul>
     </div>
     <div class="foot-col">
-      <h4>仓库</h4>
+      <h3>仓库</h3>
       <ul>
         <li><a href="https://github.com/bytefolk/org-workbench">org-workbench</a></li>
         <li><a href="https://github.com/bytefolk/digital-employee">digital-employee</a></li>
@@ -504,7 +523,7 @@
       </ul>
     </div>
     <div class="foot-col">
-      <h4>组织</h4>
+      <h3>组织</h3>
       <ul>
         <li><a href="https://github.com/bytefolk">github.com/bytefolk</a></li>
         <li><a href="#">Apache-2.0</a></li>
@@ -533,15 +552,38 @@
   })();
 
   (function () {
-    var tabs = document.querySelectorAll('.tab-btn');
-    var panels = document.querySelectorAll('.tab-panel');
-    tabs.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        tabs.forEach(function (b) { b.setAttribute('aria-selected', 'false'); });
-        panels.forEach(function (p) { p.removeAttribute('data-active'); });
-        btn.setAttribute('aria-selected', 'true');
-        document.getElementById(btn.dataset.tab).setAttribute('data-active', '');
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab-btn'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.tab-panel'));
+    if (!tabs.length) return;
+
+    function select(btn, focus) {
+      tabs.forEach(function (b) {
+        var on = b === btn;
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.setAttribute('tabindex', on ? '0' : '-1');
       });
+      panels.forEach(function (p) { p.removeAttribute('data-active'); });
+      var panel = document.getElementById(btn.dataset.tab);
+      if (panel) panel.setAttribute('data-active', '');
+      if (focus) btn.focus();
+    }
+
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () { select(btn, false); });
+    });
+
+    // Declaring role="tab" promises arrow-key navigation to assistive tech.
+    document.querySelector('[role="tablist"]').addEventListener('keydown', function (e) {
+      var i = tabs.indexOf(document.activeElement);
+      if (i === -1) return;
+      var next = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') next = tabs[0];
+      else if (e.key === 'End') next = tabs[tabs.length - 1];
+      if (!next) return;
+      e.preventDefault();
+      select(next, true);
     });
   })();
 </script>
