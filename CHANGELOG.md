@@ -11,6 +11,7 @@
 
 - 首个可发布的官网页面：hero、line 原语说明、能力清单、三条原则（含可切换 tab）、Runtime 抽象层轨道图、三级收编阶梯、CTA、页脚。内容取自 `org-workbench` 现有仓库事实，附一张该客户端 `examples/oss-maintainer` 示例工作区的真实截图（未经修饰）。
 - 导航与 favicon 图标：替换初始占位图形为正式设计稿（teal 环 + 播放三角标记）。
+- `scripts/render-check.js`：站点的渲染校验脚本。无头渲染 `index.html`，对 hero / runtime / ladder 三段分别定位、滚动、截图并检查尺寸与文件大小，逐屏推进滚动以确保 9 个 `.reveal` 区块全部被 IntersectionObserver 触发，点击三条原则的 tab 验证面板切换，并在捕获到任何 `console.error` / `pageerror` 或断言失败时 **以非零退出码结束**（`try/finally` 保证浏览器关闭）。带 `--self-test-failclose` 参数会在同一页面注入一条 console 错误和一个抛出的异常，用于证明失败路径确实会 fail-close 而不只是打印。
 
 ### Fixed
 
