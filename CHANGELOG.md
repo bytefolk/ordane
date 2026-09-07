@@ -17,6 +17,12 @@
 
   带 `--self-test-failclose` 会在同一页面注入一条 console 错误和一个抛出的异常，用于证明失败路径确实以非零退出，而不只是打印。
 
+- CI（`.github/workflows/verify.yml`）：PR 与推送 main 时自动跑对比度审计与渲染检查，外加一道**守卫的守卫**——用注入错误的页面重跑渲染检查，若它居然通过则让构建失败，确保绿灯不是静默空转。三段截图作为 run artifact 上传，保留 14 天。
+- `scripts/contrast-check.js`：把对比度计算固化为脚本。token 直接从 `index.html` 解析而非在脚本里重述，因此不会与被检查的文件脱节；覆盖 22 对文字/背景 × 明暗两套共 44 项，任一项低于门槛即以非零退出。
+- `scripts/render-check.js`：渲染校验脚本，见上方 [Unreleased] 说明。
+- `package.json` + `package-lock.json`：固定验证工具链（`playwright-core` 1.62.1）。此前仓库没有 manifest，在仓库内跑 `npm install` 会装到外层目录树、`npx playwright install` 会拉到未固定的另一个包；现在 `npm ci` 从 lockfile 确定性安装。
+- `.github/PULL_REQUEST_TEMPLATE.md`：静态站点专用的轻量模板。组织级流程（issue → 分支 → PR → 独立评审 → squash）不变，但手写验证台账改为指向 CI，并保留两项 CI 判断不了的检查：事实准确性与人工过目（手机宽度、明暗两套）。
+
 ### Fixed
 
 - 手机宽度横向溢出：Runtime 轨道图的三个 Host 节点用 `left: 90%` 等绝对定位 + `white-space: nowrap`，390px 下容器仅约 334px 宽，把文档撑到比视口宽 71px（`docScrollW=461` vs `winW=390`），导致整页可以左右拖动。720px 以下改为纵向堆叠（隐藏轨道圆环、节点转为静态流式布局并允许换行），修复后 390 / 768 / 1440 三个宽度均无横向溢出。
