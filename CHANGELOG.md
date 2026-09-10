@@ -5,7 +5,26 @@
 
 ## [Unreleased]
 
-含 PR #3（feat: add Ordane marketing site）。
+含 PR #3（feat: add Ordane marketing site）与本次 RoleWeave 品牌 / 文案对齐。
+
+### Changed
+
+- **全站更名 Ordane → RoleWeave**，事实口径统一改取自 `bytefolk/roleweave` 仓库 README 与 v0.1.1 release：
+  - 标识改用仓库内的 `branding/roleweave/roleweave-icon.svg`（紫 / 蓝 R+W 字母组合），内联进导航并编码为 favicon。
+  - 主色跟随标识：token `--teal*` 更名 `--brand*`，取值来自 logo 的紫 `#722ed1`（OKLCH `49.4% 0.228 295.6`）；新增 `--azure`（logo 的蓝 `#1677ff`）用于 hero 标题强调。`scripts/contrast-check.js` 的 token 名与配对表同步更新，并为大字号强调新增一对 azure / paper（3:1 门槛），明暗两套共 46 项全部通过。
+  - 版本标注由 `v0.6.0 · Alpha` 改为 `v0.1.1 · 早期预览`；导航、hero、CTA 增加指向 releases 的下载入口。
+  - `#concept` 由 line 原语改为「文件树即组织架构」，附 `examples/oss-maintainer` 的实际目录结构与工作区 / 岗位 / 会话三个概念的定义。
+  - `#principles` 由「三条不动摇的原则」改为 README 的三类日常使用（组织一支团队 / 与岗位工作 / 看清发生了什么）；能力清单重写为 v0.1.1 已发布的五项与仍在进行的三项。
+  - `#runtime` 由「claude-local 与 qoder 均有本机验证证据」改为：默认适配器 Qoder CLI 1.1.x、macOS 已实机验证，Claude Code 未纳入验证基线，doc / mem / context 标为可选连接服务。
+  - `#ladder` 由「个人 → 团队 → 组织」三级收编阶梯改为下载与上手：macOS（Apple Silicon）、Windows x64、Linux / Intel Mac 三张卡片加五步 get-started。后者在 v0.1.1 未提供安装包，如实标为暂未提供。
+- 修正两处超出仓库事实的表述：页脚「本地优先 · 数据不出域」改为「工作区文件本地存储 · 提示词仍会发送给所配置的 AI 提供方」——README 明确 local storage 不等于 offline AI；下载卡片角标由「已实机验证」改为「自动更新可用」——README 明确安装、卸载与跨版本自动更新未声称端到端验证。
+- hero 沿用同一张真实客户端截图（未经修饰），但其窗口标题仍是改名前的 `org-workbench` 开发版，已在图注中据实说明。
+- 下载入口改为悬浮下拉：导航、hero、CTA 三处的「下载」按钮悬停即展开菜单，直接列出 v0.1.1 的两个安装包（`roleweave-0.1.1-arm64.dmg` 与 `roleweave-0.1.1-x64.exe`），点哪个就下哪个——GitHub release 资产带 `Content-Disposition: attachment`，无需中转到 releases 页面再找文件。
+  - 用 `<details>` 而不是纯 JS 菜单：JavaScript 关掉时点击仍能展开，脚本只负责悬停展开、点选后收起、Escape 与点击外部关闭。菜单与按钮之间的 10px 间隙由 `.dl-menu` 的 `padding-top` 承担，指针移进菜单不会触发 `mouseleave`。
+  - 「当前设备」角标只认浏览器自报的平台：Windows 标 EXE，macOS 标 DMG；`navigator.userAgentData.getHighEntropyValues` 可用且报告非 arm 架构时撤掉 macOS 角标——mac 包只有 arm64，不能让 Intel Mac 用户以为那是给他们的。Linux 与 iOS 不标任何一项。检测整体包在 try/catch 里，失败也不影响下拉本身。
+  - `.hero-inner` 的 `z-index` 由 1 提到 2：hero 的下拉菜单从这层里溢出，而 `.float-card`（截图卡）同为 `z-index: 1` 且在 DOM 里靠后，此前会把展开的菜单盖住并抢走指针事件。
+  - `scripts/contrast-check.js` 新增下拉悬停态的 ink / band 一对，明暗两套共 48 项通过。
+- `package.json` / `package-lock.json` 包名 `@bytefolk/ordane-site` → `@bytefolk/roleweave-site`，README 重写为 RoleWeave 官网说明。仓库名与 Pages 地址仍是 `ordane`，重命名需单独处理。
 
 ### Added
 

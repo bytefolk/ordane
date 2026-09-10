@@ -34,7 +34,7 @@ This page is a public claim about what the product does. For each capability or
 status the diff adds or changes, name where it is backed:
 
 <!--
-e.g. "chat @position — Shipped: org-workbench README, D3 section"
+e.g. "role budgets — Shipped: roleweave README, 'How workspaces work'"
 Anything not yet delivered must read as planned/preview, never as shipped.
 -->
 

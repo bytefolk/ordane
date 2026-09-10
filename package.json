@@ -1,8 +1,8 @@
 {
-  "name": "@bytefolk/ordane-site",
+  "name": "@bytefolk/roleweave-site",
   "private": true,
   "version": "0.0.0",
-  "description": "Static marketing site for Ordane. No build step; this manifest only pins the verification toolchain.",
+  "description": "Static marketing site for RoleWeave. No build step; this manifest only pins the verification toolchain.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
