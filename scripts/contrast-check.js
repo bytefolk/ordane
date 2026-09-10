@@ -71,29 +71,33 @@ const dark = tokensFrom(':root[data-theme="dark"] {');
 if (!light.card) light.card = [100, 0, 0];
 
 const SMALL = 4.5;
+// Large-scale text (>= 24px regular / 18.66px bold) only needs 3:1.
+const LARGE = 3;
 const PAIRS = [
   ['nav + body text        ink-2 on paper', 'ink-2', 'paper', SMALL],
   ['headings               ink on paper', 'ink', 'paper', SMALL],
-  ['section eyebrow        teal on paper', 'teal', 'paper', SMALL],
-  ['section eyebrow        teal on band', 'teal', 'band', SMALL],
+  ['section eyebrow        brand on paper', 'brand', 'paper', SMALL],
+  ['section eyebrow        brand on band', 'brand', 'band', SMALL],
   ['cap rows / tab label   ink-2 on band', 'ink-2', 'band', SMALL],
   ['tier body              ink-2 on card', 'ink-2', 'card', SMALL],
-  ['tier status            teal on card', 'teal', 'card', SMALL],
-  ['shipped state          teal on band', 'teal', 'band', SMALL],
-  ['float head live        teal on card', 'teal', 'card', SMALL],
+  ['tier status            brand on card', 'brand', 'card', SMALL],
+  ['shipped state          brand on band', 'brand', 'band', SMALL],
+  ['float head live        brand on card', 'brand', 'card', SMALL],
   ['orbit node label       ink on card', 'ink', 'card', SMALL],
   ['hero meta / caption    ink-3 on paper', 'ink-3', 'paper', SMALL],
   ['caption on band        ink-3 on band', 'ink-3', 'band', SMALL],
   ['tier mind / node tag   ink-3 on card', 'ink-3', 'card', SMALL],
   ['building state         amber on band', 'amber', 'band', SMALL],
-  ['primary button label   teal-ink on teal', 'teal-ink', 'teal', SMALL],
-  ['selected tab label     teal-ink on teal', 'teal-ink', 'teal', SMALL],
-  ['orbit centre label     teal-ink on teal', 'teal-ink', 'teal', SMALL],
-  ['cta band body          teal-ink on teal', 'teal-ink', 'teal', SMALL],
-  ['cta button label       teal on teal-ink', 'teal', 'teal-ink', SMALL],
-  ['eyebrow pill           teal on teal-soft', 'teal', 'teal-soft', SMALL],
-  ['inline code            teal on band', 'teal', 'band', SMALL],
-  ['primary button hover   teal-ink on teal-hover', 'teal-ink', 'teal-hover', SMALL],
+  ['primary button label   brand-ink on brand', 'brand-ink', 'brand', SMALL],
+  ['selected tab label     brand-ink on brand', 'brand-ink', 'brand', SMALL],
+  ['orbit centre label     brand-ink on brand', 'brand-ink', 'brand', SMALL],
+  ['cta band body          brand-ink on brand', 'brand-ink', 'brand', SMALL],
+  ['cta button label       brand on brand-ink', 'brand', 'brand-ink', SMALL],
+  ['eyebrow pill           brand on brand-soft', 'brand', 'brand-soft', SMALL],
+  ['inline code            brand on band', 'brand', 'band', SMALL],
+  ['download menu hover   ink on band', 'ink', 'band', SMALL],
+  ['hero headline accent  azure on paper', 'azure', 'paper', LARGE],
+  ['primary button hover   brand-ink on brand-hover', 'brand-ink', 'brand-hover', SMALL],
 ];
 
 let failed = 0;

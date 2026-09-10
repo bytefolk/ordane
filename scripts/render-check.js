@@ -1,4 +1,4 @@
-// Renders the Ordane site headlessly, screenshots the three sections the PR
+// Renders the RoleWeave site headlessly, screenshots the three sections the PR
 // description claims to check, asserts page health, and FAILS CLOSED
 // (process.exitCode = 1) on any page error or failed assertion. Webfont
 // requests to fonts.googleapis.com / fonts.gstatic.com failing is reported but
