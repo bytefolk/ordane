@@ -9,6 +9,8 @@
 
 ### Changed
 
+- 按统一设计语言区分操作与品牌色：下载按钮、选中标签、链接及键盘焦点使用蓝色，保留 AI / 品牌紫色；按钮内容居中、菜单和正文沿用左对齐。同步校验明暗主题的操作前景 / 背景及悬停组合，窄屏下载菜单相对操作行居中，避免文件名被左侧裁切。页面内容、整体布局和下载链接不变（#8）。
+
 - **全站更名 Ordane → RoleWeave**，事实口径统一改取自 `bytefolk/roleweave` 仓库 README 与 v0.1.1 release：
   - 标识改用仓库内的 `branding/roleweave/roleweave-icon.svg`（紫 / 蓝 R+W 字母组合），内联进导航并编码为 favicon。
   - 主色跟随标识：token `--teal*` 更名 `--brand*`，取值来自 logo 的紫 `#722ed1`（OKLCH `49.4% 0.228 295.6`）；新增 `--azure`（logo 的蓝 `#1677ff`）用于 hero 标题强调。`scripts/contrast-check.js` 的 token 名与配对表同步更新，并为大字号强调新增一对 azure / paper（3:1 门槛），明暗两套共 46 项全部通过。
