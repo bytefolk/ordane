@@ -8,7 +8,7 @@
 <meta name="description" content="RoleWeave 是一个组织和使用 AI 员工的桌面工作台：岗位住在文件夹里，文件树即组织架构。" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+SC:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-  /* ── tokens: RoleWeave brand violet / azure ────────────────── */
+  /* ── tokens: brand / AI violet, human actions azure ─────────── */
   :root {
     --paper:      oklch(98.4% 0.003 240);
     --band:       oklch(96% 0.005 240);
@@ -24,6 +24,10 @@
     --brand-soft:  oklch(94.5% 0.035 295.6);
     --brand-ink:   oklch(99% 0.004 295.6);
     --azure:       oklch(52% 0.21 259);
+    /* Same blue family as the logo; paired for readable small controls. */
+    --action:      oklch(52% 0.21 259);
+    --action-hover:oklch(44% 0.19 259);
+    --action-ink:  oklch(99% 0.004 259);
 
     --amber:      oklch(54.5% 0.15 60);
     --amber-soft: oklch(93% 0.06 62);
@@ -52,6 +56,10 @@
       --brand-soft:  oklch(28% 0.08 295.6);
       --brand-ink:   oklch(15% 0.03 295.6);
       --azure:       oklch(74% 0.15 259);
+      /* Same blue family as the logo; paired for readable small controls. */
+      --action:      oklch(74% 0.15 259);
+      --action-hover:oklch(82% 0.12 259);
+      --action-ink:  oklch(15% 0.03 259);
       --amber:      oklch(76% 0.13 62);
       --amber-soft: oklch(29% 0.06 62);
       --bad:        oklch(68% 0.18 25);
@@ -71,6 +79,10 @@
     --brand-soft:  oklch(28% 0.08 295.6);
     --brand-ink:   oklch(15% 0.03 295.6);
     --azure:       oklch(74% 0.15 259);
+    /* Same blue family as the logo; paired for readable small controls. */
+    --action:      oklch(74% 0.15 259);
+    --action-hover:oklch(82% 0.12 259);
+    --action-ink:  oklch(15% 0.03 259);
     --amber:      oklch(76% 0.13 62);
     --amber-soft: oklch(29% 0.06 62);
     --bad:        oklch(68% 0.18 25);
@@ -89,6 +101,10 @@
     --brand-soft:  oklch(94.5% 0.035 295.6);
     --brand-ink:   oklch(99% 0.004 295.6);
     --azure:       oklch(52% 0.21 259);
+    /* Same blue family as the logo; paired for readable small controls. */
+    --action:      oklch(52% 0.21 259);
+    --action-hover:oklch(44% 0.19 259);
+    --action-ink:  oklch(99% 0.004 259);
     --amber:      oklch(54.5% 0.15 60);
     --amber-soft: oklch(93% 0.06 62);
     --bad:        oklch(53% 0.19 25);
@@ -102,8 +118,8 @@
     font-family: var(--font-body); font-size: 16px; line-height: 1.6;
     -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
-  ::selection { background: var(--brand); color: var(--brand-ink); }
-  :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
+  ::selection { background: var(--action); color: var(--action-ink); }
+  :focus-visible { outline: 2px solid var(--action); outline-offset: 3px; border-radius: 4px; }
   img, svg { max-width: 100%; display: block; }
   a { color: inherit; }
   h1, h2, h3, h4 { text-wrap: balance; }
@@ -128,13 +144,13 @@
   .wordmark .badge svg { width: 27px; height: 27px; display: block; }
   .nav-links { display: flex; gap: 28px; font-size: 0.9rem; font-weight: 600; color: var(--ink-2); }
   .nav-links a { text-decoration: none; }
-  .nav-links a:hover { color: var(--brand); }
+  .nav-links a:hover { color: var(--action); }
   .nav-right { display: flex; align-items: center; gap: 12px; }
-  .btn { font-family: var(--font-body); font-weight: 700; font-size: 0.92rem; text-decoration: none; border-radius: 10px; padding: 11px 22px; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
-  .btn-primary { background: var(--brand); color: var(--brand-ink); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -10px var(--brand); background: var(--brand-hover); }
+  .btn { font-family: var(--font-body); font-weight: 700; font-size: 0.92rem; text-decoration: none; border-radius: 10px; padding: 11px 22px; display: inline-flex; align-items: center; justify-content: center; text-align: center; gap: 8px; transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
+  .btn-primary { background: var(--action); color: var(--action-ink); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -10px var(--action); background: var(--action-hover); }
   .btn-ghost { border: 1.5px solid var(--line-strong); color: var(--ink); }
-  .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+  .btn-ghost:hover { border-color: var(--action); color: var(--action); }
   .btn-sm { padding: 8px 16px; font-size: 0.85rem; border-radius: 8px; }
   @media (max-width: 760px) { .nav-links { display: none; } }
 
@@ -211,8 +227,8 @@
     background: var(--band); border: 1px solid var(--line); border-radius: 999px; padding: 10px 20px;
     cursor: pointer; transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
-  .tab-btn:hover { border-color: var(--brand); color: var(--brand); }
-  .tab-btn[aria-selected="true"] { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+  .tab-btn:hover { border-color: var(--action); color: var(--action); }
+  .tab-btn[aria-selected="true"] { background: var(--action); color: var(--action-ink); border-color: var(--action); }
   .tab-panels { max-width: 720px; margin: 0 auto; }
   .tab-panel { display: none; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 32px 34px; text-align: left; }
   .tab-panel[data-active] { display: block; }
@@ -294,10 +310,11 @@
   .cta-band { background: var(--brand); color: var(--brand-ink); text-align: center; padding: 68px 28px; border-radius: 22px; max-width: 1080px; margin: 0 auto; }
   .cta-band h2 { font-family: var(--font-cjk); font-weight: 800; font-size: clamp(1.6rem, 3.6vw, 2.3rem); margin: 0 0 16px; letter-spacing: -0.01em; }
   .cta-band p { font-family: var(--font-body); font-size: 1rem; opacity: 0.92; max-width: 46ch; margin: 0 auto 30px; line-height: 1.6; }
-  .cta-band .btn-primary { background: var(--brand-ink); color: var(--brand); }
-  .cta-band .btn-primary:hover { background: var(--brand-ink); box-shadow: 0 10px 24px -10px oklch(10% 0.02 295.6 / 0.4); }
+  .cta-band .btn-primary { background: var(--action-ink); color: var(--action); }
+  .cta-band .btn-primary:hover { background: var(--action-ink); color: var(--action-hover); box-shadow: 0 10px 24px -10px oklch(10% 0.02 295.6 / 0.4); }
   .cta-band .btn-ghost { border-color: color-mix(in oklab, var(--brand-ink) 45%, transparent); color: var(--brand-ink); }
   .cta-band .btn-ghost:hover { border-color: var(--brand-ink); }
+  .cta-band :focus-visible { outline-color: var(--brand-ink); }
 
   /* ── footer ─────────────────────────────────────────────────── */
   .foot { padding: 80px 0 40px; }
@@ -306,7 +323,7 @@
   .foot-col h3 { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin: 0 0 16px; font-weight: 600; }
   .foot-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
   .foot-col a { text-decoration: none; font-size: 0.9rem; color: var(--ink-2); }
-  .foot-col a:hover { color: var(--brand); }
+  .foot-col a:hover { color: var(--action); }
   .foot-brand { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; margin-bottom: 10px; }
   .foot-brand-desc { color: var(--ink-3); font-size: 0.85rem; line-height: 1.6; max-width: 32ch; }
   .foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 24px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-3); }
@@ -318,8 +335,8 @@
     border-radius: 12px; padding: 18px 20px; margin: 26px 0; overflow-x: auto;
   }
   .tree b { color: var(--brand); font-weight: 600; }
-  .tier li a { color: var(--brand); text-decoration: none; font-weight: 600; border-bottom: 1px solid color-mix(in oklab, var(--brand) 35%, transparent); }
-  .tier li a:hover { border-bottom-color: var(--brand); }
+  .tier li a { color: var(--action); text-decoration: none; font-weight: 600; border-bottom: 1px solid color-mix(in oklab, var(--action) 35%, transparent); }
+  .tier li a:hover { border-bottom-color: var(--action); }
   .steps { max-width: 760px; margin: 52px auto 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 16px; }
   .steps li { display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: start; color: var(--ink-2); font-size: 0.92rem; line-height: 1.65; }
   .steps li::before {
@@ -343,6 +360,10 @@
     padding-top: 10px; min-width: min(320px, calc(100vw - 40px));
   }
   .dl-right .dl-menu { left: auto; right: 0; transform: none; }
+  @media (max-width: 760px) {
+    .hero-actions { position: relative; }
+    .hero-actions .dl { position: static; }
+  }
   .dl-card {
     background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px;
     box-shadow: 0 24px 48px -20px oklch(20% 0.02 240 / 0.35), 0 4px 14px -8px oklch(20% 0.02 240 / 0.22);
@@ -364,7 +385,7 @@
     display: block; margin-top: 4px; padding: 11px 14px 5px; border-top: 1px solid var(--line);
     font-family: var(--font-mono); font-size: 0.7rem; line-height: 1.5; color: var(--ink-3); text-decoration: none;
   }
-  .dl-more:hover { color: var(--brand); }
+  .dl-more:hover { color: var(--action); }
 </style>
 </head>
 <body>
